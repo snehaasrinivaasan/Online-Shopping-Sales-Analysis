@@ -3,9 +3,9 @@ Online Shopping Sales Analysis using Big Data – A web-based application for an
 # 🛒 Online Shopping Sales Analysis
 
 ## 👥 Team Members
-- **S. Snehaa**(112505030)
-- **B. Divyashri**(112505014)
-- **G. Yogalakshmi**(112505040)
+- **B.Divyashri**(112505014)
+-**S.Snehaa **(112505030)
+- **G.Yogalakshmi**(112505040)
 
 ## 🛠️ Technologies Used
 - **HDFS** - Distributed Storage
