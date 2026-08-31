@@ -1,1 +1,87 @@
 frontend/index.html
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Shopping Sales Analysis</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header class="header">
+    <div>
+        <h1>🛒 Online Shopping Sales Analysis</h1>
+        <p>Big Data Analytics System</p>
+    </div>
+    <a href="dashboard.html" class="dashboard-btn">Open Dashboard</a>
+</header>
+
+<section class="hero">
+    <div class="hero-content">
+        <h2>Analyze Online Shopping Sales</h2>
+        <p>
+            Analyze sales data using Big Data technologies such as
+            HDFS, Apache Spark and PySpark.
+        </p>
+
+        <a href="dashboard.html" class="start-btn">
+            View Sales Dashboard →
+        </a>
+    </div>
+</section>
+
+<section class="features">
+
+    <div class="feature-card">
+        <div class="icon">📁</div>
+        <h3>Data Storage</h3>
+        <p>Sales data can be stored using HDFS and MySQL.</p>
+    </div>
+
+    <div class="feature-card">
+        <div class="icon">⚡</div>
+        <h3>Big Data Processing</h3>
+        <p>PySpark processes large volumes of shopping data.</p>
+    </div>
+
+    <div class="feature-card">
+        <div class="icon">📊</div>
+        <h3>Sales Analysis</h3>
+        <p>Analyze products, categories and monthly sales.</p>
+    </div>
+
+    <div class="feature-card">
+        <div class="icon">📈</div>
+        <h3>Visualization</h3>
+        <p>View sales results using interactive charts.</p>
+    </div>
+
+</section>
+
+<section class="about">
+    <h2>Project Technologies</h2>
+
+    <div class="technology-list">
+        <span>HTML</span>
+        <span>CSS</span>
+        <span>JavaScript</span>
+        <span>Python Flask</span>
+        <span>MySQL</span>
+        <span>HDFS</span>
+        <span>Apache Spark</span>
+        <span>PySpark</span>
+    </div>
+</section>
+
+<footer>
+    <p>Online Shopping Sales Analysis using Big Data</p>
+    <p>MCA Mini Project</p>
+</footer>
+
+</body>
+</html>
