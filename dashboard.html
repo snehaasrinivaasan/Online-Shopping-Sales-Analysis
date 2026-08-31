@@ -1,1 +1,197 @@
 frontend/dashboard.html
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Sales Dashboard</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+
+<header class="dashboard-header">
+
+    <div>
+        <h1>📊 Sales Dashboard</h1>
+        <p>Online Shopping Sales Analysis using Big Data</p>
+    </div>
+
+    <a href="index.html" class="home-btn">← Home</a>
+
+</header>
+
+
+<main class="dashboard-container">
+
+    <!-- Summary Cards -->
+
+    <section class="summary-cards">
+
+        <div class="summary-card">
+            <div class="summary-icon">💰</div>
+
+            <div>
+                <p>Total Sales</p>
+                <h2 id="totalSales">Loading...</h2>
+            </div>
+        </div>
+
+
+        <div class="summary-card">
+            <div class="summary-icon">🛒</div>
+
+            <div>
+                <p>Total Orders</p>
+                <h2 id="totalOrders">Loading...</h2>
+            </div>
+        </div>
+
+
+        <div class="summary-card">
+            <div class="summary-icon">💵</div>
+
+            <div>
+                <p>Average Order</p>
+                <h2 id="averageOrder">Loading...</h2>
+            </div>
+        </div>
+
+
+        <div class="summary-card">
+            <div class="summary-icon">🏆</div>
+
+            <div>
+                <p>Top Category</p>
+                <h2 id="topCategory">Loading...</h2>
+            </div>
+        </div>
+
+    </section>
+
+
+    <!-- Charts -->
+
+    <section class="chart-grid">
+
+        <div class="chart-card">
+
+            <h2>📊 Sales by Category</h2>
+
+            <div class="chart-container">
+                <canvas id="categoryChart"></canvas>
+            </div>
+
+        </div>
+
+
+        <div class="chart-card">
+
+            <h2>📈 Monthly Sales</h2>
+
+            <div class="chart-container">
+                <canvas id="monthlyChart"></canvas>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- Top Products -->
+
+    <section class="table-card">
+
+        <div class="table-title">
+
+            <div>
+                <h2>🏆 Top Selling Products</h2>
+                <p>Top 10 products based on sales</p>
+            </div>
+
+        </div>
+
+
+        <div class="table-wrapper">
+
+            <table>
+
+                <thead>
+
+                    <tr>
+                        <th>Rank</th>
+                        <th>Product</th>
+                        <th>Category</th>
+                        <th>Sales</th>
+                    </tr>
+
+                </thead>
+
+                <tbody id="productTable">
+
+                    <tr>
+                        <td colspan="4">Loading...</td>
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </section>
+
+
+    <!-- Big Data Information -->
+
+    <section class="bigdata-info">
+
+        <h2>⚡ Big Data Processing</h2>
+
+        <div class="bigdata-grid">
+
+            <div>
+                <strong>Storage</strong>
+                <p>HDFS</p>
+            </div>
+
+            <div>
+                <strong>Processing</strong>
+                <p>Apache Spark / PySpark</p>
+            </div>
+
+            <div>
+                <strong>Database</strong>
+                <p>MySQL</p>
+            </div>
+
+            <div>
+                <strong>Backend</strong>
+                <p>Python Flask</p>
+            </div>
+
+        </div>
+
+    </section>
+
+</main>
+
+
+<footer>
+
+    <p>Online Shopping Sales Analysis using Big Data</p>
+
+</footer>
+
+
+<script src="script.js"></script>
+
+</body>
+</html>
