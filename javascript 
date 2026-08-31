@@ -1,1 +1,265 @@
 frontend/script.js
+
+
+const API_URL = "http://127.0.0.1:5000/api";
+
+
+/* ================= FORMAT MONEY ================= */
+
+function formatMoney(value) {
+
+    return "₹" + Number(value).toLocaleString("en-IN", {
+        maximumFractionDigits: 2
+    });
+
+}
+
+
+/* ================= GET API DATA ================= */
+
+async function getData(endpoint) {
+
+    const response = await fetch(API_URL + endpoint);
+
+    if (!response.ok) {
+        throw new Error("Backend API error");
+    }
+
+    return await response.json();
+
+}
+
+
+/* ================= LOAD SUMMARY ================= */
+
+async function loadSummary() {
+
+    const data = await getData("/summary");
+
+    document.getElementById("totalSales").textContent =
+        formatMoney(data.total_sales);
+
+    document.getElementById("totalOrders").textContent =
+        data.total_orders;
+
+    document.getElementById("averageOrder").textContent =
+        formatMoney(data.average_order);
+
+    document.getElementById("topCategory").textContent =
+        data.top_category;
+
+}
+
+
+/* ================= CATEGORY CHART ================= */
+
+async function loadCategoryChart() {
+
+    const data = await getData("/category-sales");
+
+    const canvas =
+        document.getElementById("categoryChart");
+
+    new Chart(canvas, {
+
+        type: "bar",
+
+        data: {
+
+            labels: data.labels,
+
+            datasets: [
+
+                {
+                    label: "Sales",
+
+                    data: data.values,
+
+                    borderWidth: 1
+                }
+
+            ]
+
+        },
+
+        options: {
+
+            responsive: true,
+
+            maintainAspectRatio: false,
+
+            plugins: {
+
+                legend: {
+                    display: true
+                }
+
+            }
+
+        }
+
+    });
+
+}
+
+
+/* ================= MONTHLY SALES ================= */
+
+async function loadMonthlyChart() {
+
+    const data = await getData("/monthly-sales");
+
+    const canvas =
+        document.getElementById("monthlyChart");
+
+    new Chart(canvas, {
+
+        type: "line",
+
+        data: {
+
+            labels: data.labels,
+
+            datasets: [
+
+                {
+                    label: "Monthly Sales",
+
+                    data: data.values,
+
+                    borderWidth: 3,
+
+                    tension: 0.3,
+
+                    fill: false
+                }
+
+            ]
+
+        },
+
+        options: {
+
+            responsive: true,
+
+            maintainAspectRatio: false,
+
+            plugins: {
+
+                legend: {
+                    display: true
+                }
+
+            }
+
+        }
+
+    });
+
+}
+
+
+/* ================= TOP PRODUCTS ================= */
+
+async function loadProducts() {
+
+    const products =
+        await getData("/top-products");
+
+    const table =
+        document.getElementById("productTable");
+
+    table.innerHTML = "";
+
+    products.forEach((product, index) => {
+
+        const row =
+            document.createElement("tr");
+
+        row.innerHTML = `
+
+            <td>${index + 1}</td>
+
+            <td>${product.product}</td>
+
+            <td>${product.category}</td>
+
+            <td>${formatMoney(product.sales)}</td>
+
+        `;
+
+        table.appendChild(row);
+
+    });
+
+}
+
+
+/* ================= LOAD DASHBOARD ================= */
+
+async function loadDashboard() {
+
+    try {
+
+        await loadSummary();
+
+        await loadCategoryChart();
+
+        await loadMonthlyChart();
+
+        await loadProducts();
+
+    }
+
+    catch (error) {
+
+        console.error(error);
+
+        showBackendError();
+
+    }
+
+}
+
+
+/* ================= BACKEND ERROR ================= */
+
+function showBackendError() {
+
+    const message = document.createElement("div");
+
+    message.className = "backend-error";
+
+    message.innerHTML = `
+
+        <h3>⚠ Backend is not running</h3>
+
+        <p>
+            Please start the Flask backend using:
+        </p>
+
+        <code>
+            python app.py
+        </code>
+
+        <p>
+            Backend URL:
+            http://127.0.0.1:5000
+        </p>
+
+    `;
+
+    document
+        .querySelector(".dashboard-container")
+        .prepend(message);
+
+}
+
+
+/* ================= START ================= */
+
+if (document.getElementById("totalSales")) {
+
+    loadDashboard();
+
+}
