@@ -5,10 +5,8 @@
 No frontend, no backend — just the Big Data tools from the practical list.
 
 ## 👥 Team Members
-
-- B. Divyashri (112505014)
+ 
 - S. Snehaa (112505030)
-- G. Yogalakshmi (112505040)
 
 ## 1. Folder contents
 
